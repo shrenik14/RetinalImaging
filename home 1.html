@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detection of Diseases Using Retinal Imaging via CNN</title>
+    
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2e3b55);
+            color: #ffffff;
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 20px;
+        }
+
+        .box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .heading {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 20px;
+            color: #FFFFFF;
+        }
+
+        .scrolling-text {
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: scrollText 10s linear infinite;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #00FFFF;
+        }
+
+        @keyframes scrollText {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .file-label {
+            font-size: 1.5rem;
+            background-color: #800080;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .file-name {
+            margin-left: 20px;
+            font-size: 1rem;
+            color: #fca311;
+            display: inline-block;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 2px solid #fca311; /* Light orange border */
+        }
+
+        .button {
+            margin-top: 25px;
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            background-color: #5e60ce;
+            color: white;
+            border-radius: 8px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #4e4fb5;
+        }
+
+        .credits {
+            margin-top: 40px;
+            font-size: 0.95rem;
+            color: #aaaaaa;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="box">
+            <h1 class="heading">DETECTION OF DISEASES USING RETINAL IMAGING VIA CNN</h1>
+            <p class="subtitle">Upload an image to classify using our deep learning model.</p>
+
+            <form action="/classify" method="post" enctype="multipart/form-data">
+                <!-- File Upload Section -->
+                <div class="file has-name is-centered">
+                    <label class="file-label" for="image">
+                        <input class="file-input" type="file" id="image" name="image">
+                        <span class="file-cta"><strong>Choose Image</strong></span>
+                        <span class="file-name" id="file-name">No file chosen</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="button">Classify</button>
+            </form>
+
+            <div class="credits">
+                By K. Sri Harsha and N.D. Shrenik Reddy
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.file-input').addEventListener('change', function(event) {
+            const fileName = event.target.files[0] ? event.target.files[0].name : 'No file chosen';
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>

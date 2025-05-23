@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retinal Disease Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+        body {
+            background: url('/static/images.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hero {
+            background: rgba(30, 60, 114, 0.85);
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #ffdd57;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #ffdd57;
+            margin-top: 10px;
+        }
+
+        .button-custom {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            color: white;
+            padding: 12px 28px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: none;
+            transition: 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(255, 117, 140, 0.4);
+        }
+
+        .button-custom:hover {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            transform: scale(1.05);
+        }
+
+        .prediction-box {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            margin-top: 2rem;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(255, 221, 87, 0.4);
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #ffdd57;
+        }
+
+        .pred_img {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(255, 221, 87, 0.4);
+        }
+
+        .main-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+<section class="hero is-fullheight">
+    <div class="container main-content has-text-centered">
+        <h1 class="title">Detection of Diseases Using Retinal Imaging</h1>
+        <p class="subtitle"></p>
+
+        <div class="image-container">
+            <img class="pred_img" src="{{ url_for('send_file', filename=image_file_name) }}" alt="Retinal Image">
+        </div>
+
+        <div class="prediction-box">
+            <h2 style="font-size: 1.8rem;">Diagnosis: <span class="highlight">{{ label }}</span></h2>
+            <h2 style="font-size: 1.3rem;">Confidence Level: <span class="highlight">{{ prob }}</span></h2>
+        </div>
+
+        <br>
+        <a href="/" class="button button-custom">Back to Home</a>
+    </div>
+</section>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
